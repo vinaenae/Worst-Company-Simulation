@@ -2,7 +2,7 @@
 Student information for this assignment:
 
 Replace <FULL NAME> with your name.
-On my/our honor, <FULL NAME> and <FULL NAME>, this
+On my/our honor, <Vinay Devarakonda> and <Cesar Dao Corado>, this
 programming assignment is my own work and I have not provided this code to
 any other student.
 
@@ -67,6 +67,7 @@ class Employee(ABC):
     @property
     def performance(self):
         return self._performance
+    
     @performance.setter
     def performance(self, perf_scale):
         if perf_scale < PERCENTAGE_MIN:
@@ -104,7 +105,7 @@ class Employee(ABC):
         self.savings -= DAILY_EXPENSE
 
     def __str__(self):
-        return f"{self.name}\n\tSalary: ${self.salary}\n\tSavings:${self.savings}\n\tHappiness: {self.happiness}%\n\tPerformance: {self.performance}%"
+        return f"{self.name}\n\tSalary: ${self.salary}\n\tSavings: ${self.savings}\n\tHappiness: {self.happiness}%\n\tPerformance: {self.performance}%"
 
 
 class Manager(Employee):
