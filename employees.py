@@ -32,7 +32,6 @@ PERCENTAGE_MIN = 0
 SALARY_ERROR_MESSAGE = "Salary must be non-negative."
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class Employee(ABC):
     """
     Abstract base class representing a generic employee in the system.
@@ -47,19 +46,15 @@ class Employee(ABC):
         self._performance = INITIAL_PERFORMANCE
         self._happiness = INITIAL_HAPPINESS
         self._salary = salary
-    
     @property
     def name(self):
         return self._name
-    
     @property
     def manager(self):
         return self._manager
-    
     @property
     def happiness(self):
         return self._happiness
-    
     @happiness.setter
     def happiness(self, happiness_scale):
         if happiness_scale < PERCENTAGE_MIN:
@@ -68,10 +63,10 @@ class Employee(ABC):
             self._happiness = PERCENTAGE_MAX
         else:
             self._happiness = happiness_scale
+
     @property
     def performance(self):
         return self._performance
-    
     @performance.setter
     def performance(self, perf_scale):
         if perf_scale < PERCENTAGE_MIN:
@@ -83,7 +78,6 @@ class Employee(ABC):
     @property
     def salary(self):
         return self._salary
-    
     @salary.setter
     def salary(self, salary_value):
         if salary_value < 0:
@@ -105,16 +99,14 @@ class Employee(ABC):
         else:
             self.relationships[other.name] -= 1
             self.happiness -= 1
-            
     def daily_expense(self):
         self.happiness -= 1
         self.savings -= DAILY_EXPENSE
 
     def __str__(self):
-        return f"{self.name}\n\tSalary: ${self.salary}\n\tSavings: ${self.savings}\n\tHappiness: {self.happiness}%\n\tPerformance: {self.performance}%"
+        return f"{self.name}\n\tSalary: ${self.salary}\n\tSavings:${self.savings}\n\tHappiness: {self.happiness}%\n\tPerformance: {self.performance}%"
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class Manager(Employee):
     """
     A subclass of Employee representing a manager.
@@ -131,7 +123,6 @@ class Manager(Employee):
 
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class TemporaryEmployee(Employee):
     """
     A subclass of Employee representing a temporary employee.
@@ -156,7 +147,6 @@ class TemporaryEmployee(Employee):
                 if self.salary == 0:
                     self.is_employed = False
 
-# TODO: implement this class. You may delete this comment when you are done.
 class PermanentEmployee(Employee):
     """
     A subclass of Employee representing a permanent employee.
@@ -166,7 +156,6 @@ class PermanentEmployee(Employee):
         self.performance += perm_change
         if perm_change >= 0:
             self.happiness += 1
-            
     def interact(self, other):
         super().interact(other)
         if other is self.manager:
@@ -175,4 +164,3 @@ class PermanentEmployee(Employee):
                     self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
                 self.happiness -= 1
-
