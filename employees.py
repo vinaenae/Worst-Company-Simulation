@@ -164,7 +164,7 @@ class TemporaryEmployee(Employee):
             else:
                 self.salary //= 2
                 self.happiness -= 5
-                if self.salary <= 0:
+                if self.salary == 0:
                     self.is_employed = False
 
 
