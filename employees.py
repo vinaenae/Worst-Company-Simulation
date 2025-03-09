@@ -175,10 +175,6 @@ class PermanentEmployee(Employee):
     def work(self):
         perm_change = random.randint(-10, 10)
         self.performance += perm_change
-        if self.performance < PERCENTAGE_MIN:
-            self.performance = PERCENTAGE_MIN
-        elif self.performance > PERCENTAGE_MAX:
-            self.performance = PERCENTAGE_MAX
         if perm_change >= 0:
             self.happiness += 1
 
@@ -189,4 +185,4 @@ class PermanentEmployee(Employee):
                 if self.performance >= PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                     self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
-                self.happiness -= 1               
+                self.happiness -= 1
