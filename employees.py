@@ -180,7 +180,7 @@ class PermanentEmployee(Employee):
 
     def interact(self, other):
         super().interact(other)
-        if other == self.manager:
+        if other is self.manager:
             if other.happiness > HAPPINESS_THRESHOLD:
                 if self.performance >= PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                     self.savings += MANAGER_BONUS
