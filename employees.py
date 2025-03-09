@@ -126,10 +126,6 @@ class Manager(Employee):
     def work(self):
         man_change = random.randint(-5, 5)
         self.performance += man_change
-        if self.performance < PERCENTAGE_MIN:
-            self.performance = PERCENTAGE_MIN
-        elif self.performance > PERCENTAGE_MAX:
-            self.performance = PERCENTAGE_MAX
         if man_change <= 0:
             self.happiness -= 1
             for employee in self.relationships:
@@ -145,10 +141,6 @@ class TemporaryEmployee(Employee):
     def work(self):
         temp_change = random.randint(-15, 15)
         self.performance += temp_change
-        if self.performance < PERCENTAGE_MIN:
-            self.performance = PERCENTAGE_MIN
-        elif self.performance > PERCENTAGE_MAX:
-            self.performance = PERCENTAGE_MAX
         if temp_change > 0:
             self.happiness += 1
         else:
