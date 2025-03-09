@@ -111,7 +111,11 @@ class Employee(ABC):
         self.savings -= DAILY_EXPENSE
 
     def __str__(self):
-        return f"{self.name}\n\tSalary: ${self.salary}\n\tSavings: ${self.savings}\n\tHappiness: {self.happiness}%\n\tPerformance: {self.performance}%"
+        return (f"{self.name}\n\tSalary: "
+        f" ${self.salary}\n\tSavings: "
+        f" ${self.savings}\n\tHappiness: "
+        f" {self.happiness}%\n\tPerformance: "
+        f" {self.performance}%")
 
 
 class Manager(Employee):
@@ -180,7 +184,8 @@ class PermanentEmployee(Employee):
     def interact(self, other):
         super().interact(other)
         if other == self.manager:
-            if other.happiness > HAPPINESS_THRESHOLD and self.performance >= PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
-                self.savings += MANAGER_BONUS
+            if other.happiness > HAPPINESS_THRESHOLD:
+                if self.performance >= PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
+                    self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
-                self.happiness -= 1
+                self.happiness -= 1               
